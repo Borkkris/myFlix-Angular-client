@@ -10,7 +10,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'YOUR_HOSTET_LINK_HERE';
+const apiUrl = 'https://app-my-flix.herokuapp.com';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,7 +24,7 @@ export class FetchApiDataService {
     console.log(userDetails);
     return this.http
       .post(apiUrl + 'users', userDetails)
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // User login
@@ -32,7 +32,7 @@ export class FetchApiDataService {
     console.log(userDetails);
     return this.http
       .post(apiUrl + 'login', userDetails)
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get all movies
