@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog'; // Close dialog on success
 import { FetchApiDataService } from '../fetch-api-data.service'; // API
 import { MatSnackBar } from '@angular/material/snack-bar'; // Notifications
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,27 +15,30 @@ export class UserLoginFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '' };
 
   constructor(
-     public fetchApiData: FetchApiDataService,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 // This is the function responsible for sending the form inputs to the backend
+
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       console.log(result);
+      // Add token anf Username to localStorage
       localStorage.setItem('user', result.user.Username);
       localStorage.setItem('token', result.token);
       this.dialogRef.close(); // This will close the modal on success!
-      this.snackBar.open(result, 'OK', {
-        duration: 2000,
-      });
-    },
-    (result) => {
-      this.snackBar.open(result, 'OK', {
-        duration: 2000,
-      });
-    });
+      this.router.navigate(['movies']);
+      },
+      (result) => {
+        console.log(result);
+        this.snackBar.open(result, 'OK', {
+          duration: 2000,
+        });
+      }
+    );
   }
 }

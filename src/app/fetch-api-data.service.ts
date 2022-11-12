@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+// So this .ts 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://app-my-flix.herokuapp.com/';
 @Injectable({
@@ -58,20 +58,20 @@ export class FetchApiDataService {
   }
 
   // Get director
-  getDirector(directorName: string): Observable<any> {
+  getDirector(director: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(`${apiUrl}movies/directors/${directorName}`, {
+      .get(`${apiUrl}movies/directors/${director}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get genre
-  getGenre(genreName: string): Observable<any> {
+  getGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(`${apiUrl}movies/genre/${genreName}`, {
+      .get(`${apiUrl}movies/genre/${genre}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
