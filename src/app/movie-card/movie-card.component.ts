@@ -44,7 +44,7 @@ export class MovieCardComponent implements OnInit {
       return this.favoriteMovies;
     });
   }
-
+// link to the Genre Dialog
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -55,7 +55,7 @@ export class MovieCardComponent implements OnInit {
       width: '500px',
     });
   }
-
+  // link to the Director Dialog
    openDirectorDialog(name: string, bio: string, birthday: string): void {
     this.dialog.open(DirectorComponent, {
       data: {
@@ -79,4 +79,20 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  // logic to add the movie to favoriteMovieList
+  addToFavoriteMovies(id: string): void {
+    console.log(id);
+    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
+  // logic to remove a movie
+  removeFromFavoriteMovies(id: string): void {
+    console.log(id);
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
 }

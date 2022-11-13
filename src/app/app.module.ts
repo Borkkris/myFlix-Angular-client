@@ -28,7 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-
+// routes
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
