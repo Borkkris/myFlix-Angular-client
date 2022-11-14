@@ -2,7 +2,12 @@
 <div class="movie-view" style="display: flex">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 2 auto;">
         <mat-card-header style="height: 100px">
-        <mat-card-title>{{movie.Title}}</mat-card-title>
+        <mat-card-title>{{movie.Title}} <br> <br>
+            <mat-icon   aria-hidden="false" 
+                        fontIcon="favorite" 
+                        (click)="addToFavoriteMovies(movie._id)"
+                        ></mat-icon>
+        </mat-card-title>
             <mat-card-subtitle>Directed by: <button
                 mat-button
                 color="primary"
@@ -36,15 +41,9 @@
                         movie.Description)"
             >
                 Synopsis
-            </button> <br>
-            <button
-                style="margin: 10px;" 
-                mat-mini-fab
-                (click)="addToFavoriteMovies(
-                        movie._id)"
-                >
-                ❤︎
             </button>
         </mat-card-actions>
     </mat-card>
 </div>
+
+<!--  -->

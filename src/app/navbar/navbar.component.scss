@@ -1,4 +1,4 @@
-$backgroundColor: aliceblue;
+$backgroundColor: #d0cac4;
 $cardColor: #fff;
 $textColor: #343a40;
 $boxShadowColor: #e9ecef;
@@ -6,6 +6,7 @@ $boxShadowColor: #e9ecef;
 .nav-bar {
   border-bottom: $boxShadowColor;
   background-color: $cardColor;
+  
 }
 
 .logout-button {
