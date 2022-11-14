@@ -3,12 +3,6 @@
     <mat-card *ngFor="let movie of movies;" style="flex: 1 2 auto;">
         <mat-card-header>
         <mat-card-title >{{movie.Title}}
-            <button  
-                    mat-icon-button
-                    style="color: red"
-                    (click)="addToFavoriteMovies(movie._id)"
-                    
-            > ❤︎ </button>
         </mat-card-title>
             <mat-card-subtitle>Directed by: <button
                 mat-button
@@ -25,7 +19,7 @@
         <mat-card-actions>
             <button
                 style="margin: 10px;"
-                mat-stroked-button
+                mat-button
                 color="primary"
                 (click)="openGenreDialog(
                         movie.Genre.Name,
@@ -35,7 +29,7 @@
             </button>
             <button
                 style="margin: 10px;"
-                mat-stroked-button
+                mat-button
                 color="primary"
                 (click)="openSynopsisDialog(
                         movie.Title, 
@@ -43,6 +37,12 @@
             >
                 Synopsis
             </button>
+            <button  
+                    mat-icon-button
+                    style="color: red"
+                    (click)="addToFavoriteMovies(movie._id)"
+                    
+            > ❤︎ </button>
         </mat-card-actions>
     </mat-card>
 </div>
