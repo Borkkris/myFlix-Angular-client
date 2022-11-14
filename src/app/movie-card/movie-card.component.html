@@ -1,12 +1,14 @@
 <app-navbar></app-navbar>
 <div class="movie-view" style="display: flex">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 2 auto;">
-        <mat-card-header style="height: 100px">
-        <mat-card-title>{{movie.Title}} <br> <br>
-            <mat-icon   aria-hidden="false" 
-                        fontIcon="favorite" 
-                        (click)="addToFavoriteMovies(movie._id)"
-                        ></mat-icon> <!-- why cant I click it?-->
+        <mat-card-header>
+        <mat-card-title >{{movie.Title}}
+            <button  
+                    mat-icon-button
+                    style="color: red"
+                    (click)="addToFavoriteMovies(movie._id)"
+                    
+            > ❤︎ </button>
         </mat-card-title>
             <mat-card-subtitle>Directed by: <button
                 mat-button
@@ -18,11 +20,10 @@
             > {{movie.Director.Name}}</button>
         </mat-card-subtitle>
         </mat-card-header>
-        <img src={{movie.ImagePath}} alt= {{movie.Title}} style="width: auto; height: 300px" />
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
     
         <mat-card-actions>
             <button
-                
                 style="margin: 10px;"
                 mat-stroked-button
                 color="primary"
