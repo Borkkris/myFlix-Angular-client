@@ -37,12 +37,9 @@
             >
                 Synopsis
             </button>
-            <button  
-                    mat-icon-button
-                    style="color: red"
-                    (click)="addToFavoriteMovies(movie._id)"
-                    
-            > ❤︎ </button>
+            <button mat-icon-button color="primary" aria-label="heart icon" (click)="addToFavoriteMovies(movie._id)">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
         </mat-card-actions>
     </mat-card>
 </div>
