@@ -37,6 +37,11 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+  * Gets favorite movies from api call and sets the favorite movies variable to return JSON file
+  * @returns array holding ids of user's favorite movies
+  * @function getFavoriteMovies
+  */
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
       this.favoriteMovies = resp;
@@ -44,6 +49,7 @@ export class MovieCardComponent implements OnInit {
       return this.favoriteMovies;
     });
   }
+
 // link to the Genre Dialog
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
@@ -55,6 +61,7 @@ export class MovieCardComponent implements OnInit {
       width: '500px',
     });
   }
+  
   // link to the Director Dialog
    openDirectorDialog(name: string, bio: string, birthday: string): void {
     this.dialog.open(DirectorComponent, {
@@ -80,17 +87,18 @@ export class MovieCardComponent implements OnInit {
   }
 
   // logic to add the movie to favoriteMovieList
-  addToFavoriteMovies(id: string): void {
-    console.log(id);
-    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+  addToFavoriteMovies(_id: string): void {
+    console.log(_id);
+    this.fetchApiData.addFavoriteMovie(_id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
     });
   }
+
   // logic to remove a movie
-  removeFromFavoriteMovies(id: string): void {
-    console.log(id);
-    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
+  removeFromFavoriteMovies(_id: string): void {
+    console.log(_id);
+    this.fetchApiData.removeFavoriteMovie(_id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
     });
