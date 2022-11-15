@@ -31,4 +31,18 @@
   </mat-card>
 
   <!-- Display Favorite Movies -->
+  <div style="display: flex; flex-wrap: wrap;">
+    <mat-card *ngFor="let movie of favoriteMovies;" style="flex: 1 2 auto;">
+        <mat-card-header>
+        <mat-card-title >{{movie.Title}}
+        </mat-card-title>
+            <mat-card-subtitle>Directed by: <button
+                mat-button
+                color="primary"
+            > {{movie.Director.Name}}</button>
+        </mat-card-subtitle>
+        </mat-card-header>
+        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
+    </mat-card>
+  </div>  
 </div>

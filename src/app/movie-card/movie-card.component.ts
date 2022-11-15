@@ -44,13 +44,13 @@ export class MovieCardComponent implements OnInit {
 
   /**
   * Gets favorite movies from api call and sets the favorite movies variable to return JSON file
-  * @returns array holding ids of user's favorite movies
+  * @returns an array holding user's favorite movies
   * @function getFavoriteMovies
   */
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
-      this.favoriteMovies = resp;
-      console.log(this.favoriteMovies);
+      this.favoriteMovies = resp.FavoriteMovies;
+      console.log("Fav Movies", this.favoriteMovies);
       return this.favoriteMovies;
     });
   }
@@ -129,5 +129,10 @@ export class MovieCardComponent implements OnInit {
       console.log(result);
       this.ngOnInit();
     });
+  }
+
+  checkAMovieIsFav(movieId: string): boolean {
+    console.log("Check fav", movieId)
+    return this.favoriteMovies.includes(movieId)
   }
 }

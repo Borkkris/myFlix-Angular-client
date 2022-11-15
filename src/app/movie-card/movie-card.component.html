@@ -27,6 +27,7 @@
             >
                 Genre
             </button>
+            
             <button
                 style="margin: 10px;"
                 mat-button
@@ -37,9 +38,22 @@
             >
                 Synopsis
             </button>
-            <button mat-icon-button color="primary" aria-label="heart icon" (click)="addToFavoriteMovies(movie._id)">
-        <mat-icon>favorite_border</mat-icon>
-      </button>
+
+            <button 
+            *ngIf="!checkAMovieIsFav(movie._id)"
+            mat-icon-button color="primary" 
+            aria-label="heart icon" 
+            (click)="addToFavoriteMovies(movie._id)">
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+
+            <button 
+            *ngIf="checkAMovieIsFav(movie._id)"
+            mat-icon-button color="primary" 
+            aria-label="heart icon" 
+            (click)="removeFromFavoriteMovies(movie._id)">
+                <mat-icon>favorite</mat-icon>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

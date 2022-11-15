@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user: any = {};
+  favoriteMovies: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -22,7 +23,10 @@ export class ProfileComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUser()
+    this.getFavoriteMovies()
+  }
 
   /**
   * Gets user data from api call and sets the user variable to returned JSON file
@@ -32,9 +36,25 @@ export class ProfileComponent implements OnInit {
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
-      console.log(this.user);
+      console.log("from profile", this.user);
       return this.user;
     })
+  }
+
+  /**
+  * Gets favorite movies from api call and sets the favorite movies variable to return JSON file
+  * @returns an array holding user's favorite movies
+  * @function getFavoriteMovies
+  */
+  getFavoriteMovies(): void {
+    this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
+      const favoriteMovieIds = resp.FavoriteMovies;
+      this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+        this.favoriteMovies = resp.filter((m: any) => favoriteMovieIds.includes(m._id));
+        console.log("Filter fav movies", this.favoriteMovies)
+        return this.favoriteMovies;
+      });
+    });
   }
 
   /**
