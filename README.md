@@ -21,7 +21,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 [myFlix Angular Client API - Host](https://app-my-flix.herokuapp.com/)
 
 ## Browser
-![Screenshot myFlix-angular-client](app/assets/myFlix_angular_client.png "Screenshot myFlix-angular-client")
+![Screenshot myFlix-angular-client](src/assets/myFlix_angular_client.png"Screenshot myFlix-angular-client")
 
 ## Development server
 
