@@ -20,6 +20,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ##  API url that will provide data for the client app
 [myFlix Angular Client API - Host](https://app-my-flix.herokuapp.com/)
 
+## Browser
+![Screenshot myFlix-angular-client](assets/myFlix_angular_client.png "Screenshot myFlix-angular-client")
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
